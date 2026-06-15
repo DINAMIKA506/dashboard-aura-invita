@@ -251,138 +251,100 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
 }
 
 
-/* WELCOME SCREEN */
-.ws{
-  position:fixed;inset:0;z-index:998;
-  background:var(--p);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:52px 28px 40px;
-  text-align:center;
-  transition:opacity 0.4s ease, transform 0.4s ease;
+
+
+
+
+/* ===== PANTALLA BIENVENIDA ORDY ===== */
+#ow{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  z-index:9999;
+  background:#4e4bf7;
+  display:flex;flex-direction:column;align-items:center;
+  padding:32px 24px 40px;
   overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
-.ws.hidden{opacity:0;pointer-events:none;transform:scale(0.98);}
-.ws-ordy{width:130px;height:130px;border-radius:26px;overflow:hidden;
-  margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.2);}
-.ws-ordy img{width:100%;height:100%;object-fit:cover;}
-.ws-brand{font-size:11px;font-weight:800;color:var(--pl);
+#ow.hide{display:none;}
+#ow .av{width:156px;height:156px;border-radius:28px;
+  overflow:hidden;margin-bottom:16px;margin-top:16px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+  border:3px solid rgba(255,255,255,0.2);}
+#ow .av img{width:100%;height:100%;object-fit:cover;}
+#ow .brand{font-size:10px;font-weight:800;color:#bbbbfc;
   letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
-.ws-title{font-size:28px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:8px;}
-.ws-title span{color:var(--cream);}
-.ws-sub{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;
-  max-width:320px;margin:0 auto 24px;}
-.ws-sub strong{color:#fff;}
-.ws-divider{width:40px;height:2px;background:rgba(255,255,255,0.2);
-  border-radius:2px;margin:0 auto 24px;}
-.ws-levels{display:flex;flex-direction:column;gap:8px;
-  width:100%;max-width:320px;margin-bottom:28px;}
-.ws-lvl{
-  display:flex;align-items:center;gap:12px;
+#ow h1{font-size:26px;font-weight:900;color:#fff;
+  line-height:1.2;text-align:center;margin-bottom:6px;}
+#ow h1 em{color:#fdf2ed;font-style:normal;}
+#ow .line{width:40px;height:2px;background:rgba(255,255,255,0.18);
+  border-radius:2px;margin:14px auto;}
+#ow .desc{font-size:14px;color:rgba(255,255,255,0.65);
+  line-height:1.7;max-width:300px;text-align:center;margin-bottom:20px;}
+#ow .desc b{color:#fff;}
+#ow .lvls{display:flex;flex-direction:column;gap:8px;
+  width:100%;max-width:340px;margin-bottom:24px;}
+#ow .lv{display:flex;align-items:center;gap:11px;
   background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:12px;padding:12px 16px;
-  cursor:pointer;transition:all 0.15s;text-align:left;
-  font-family:'Nunito',sans-serif;
-}
-.ws-lvl:hover{background:rgba(255,255,255,0.18);}
-.ws-lvl-av{width:36px;height:36px;border-radius:10px;
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:12px;padding:10px 13px;
+  cursor:pointer;text-align:left;width:100%;
+  font-family:'Nunito',sans-serif;border:none;}
+#ow .lv:hover,#ow .lv:active{background:rgba(255,255,255,0.18);}
+#ow .lv-av{width:34px;height:34px;border-radius:9px;
   overflow:hidden;flex-shrink:0;}
-.ws-lvl-av img{width:100%;height:100%;object-fit:cover;}
-.ws-lvl-info{}
-.ws-lvl-name{font-size:13px;font-weight:800;color:#fff;}
-.ws-lvl-sub{font-size:11px;color:rgba(255,255,255,0.5);margin-top:1px;}
-.ws-lvl-num{font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;
-  margin-left:auto;flex-shrink:0;}
-.ws-lvl-num.done{background:rgba(26,158,110,0.25);color:#4cdf9e;}
-.ws-lvl-num.pro{background:rgba(249,70,70,0.25);color:#ff8a8a;}
-.ws-enter{
-  background:#fff;color:var(--p);border:none;border-radius:50px;
-  padding:14px 36px;font-size:15px;font-weight:900;
-  cursor:pointer;font-family:'Nunito',sans-serif;
-  box-shadow:0 4px 20px rgba(0,0,0,0.15);
-  transition:transform 0.15s;width:100%;max-width:320px;
-}
-.ws-enter:hover{transform:translateY(-2px);}
-.ws-note{margin-top:20px;font-size:11px;color:rgba(255,255,255,0.3);}
+#ow .lv-av img{width:100%;height:100%;object-fit:cover;}
+#ow .lv-tx{flex:1;min-width:0;}
+#ow .lv-nm{font-size:13px;font-weight:800;color:#fff;
+  text-align:left;display:block;}
+#ow .lv-sb{font-size:11px;color:rgba(255,255,255,0.42);
+  text-align:left;display:block;margin-top:1px;}
+#ow .lv-bg{font-size:10px;font-weight:800;padding:3px 8px;
+  border-radius:20px;flex-shrink:0;}
+#ow .lv-bg.ok{background:rgba(26,158,110,0.3);color:#4cdf9e;}
+#ow .lv-bg.pr{background:rgba(249,70,70,0.3);color:#ff8a8a;}
+#ow .go{background:#fff;color:#4e4bf7;border:none;
+  border-radius:50px;padding:14px 0;font-size:15px;
+  font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;
+  width:100%;max-width:340px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+#ow .go:active{transform:scale(0.98);}
+#ow .ft{margin-top:16px;font-size:11px;color:rgba(255,255,255,0.22);}
+/* ===== FIN BIENVENIDA ===== */
 </style>
 </head>
 <body>
 
-  <div class="ws-brand">Ordy · Orden y plan ✓</div>
   <h1 class="ws-title">Bienvenida al<br><span>océano de tu negocio</span></h1>
-  <div class="ws-divider"></div>
   <p class="ws-desc">
     Ordy es un <strong>sistema de orden para negocios</strong>. Convierte la información de tu empresa en una ruta clara de niveles, tareas, alertas y decisiones.<br><br>
     Cada nivel tiene su guía. Avanzás a tu ritmo.
   </p>
-  <div class="ws-levels">
-    <span class="ws-level">N1 · Entendé tu negocio</span>
-    <span class="ws-level">N2 · Orden operativo</span>
-    <span class="ws-level">N3 · Plata sin autoengaño</span>
-    <span class="ws-level">N4 · Formalización</span>
-    <span class="ws-level">N5 · Clientes y políticas</span>
-    <span class="ws-level">N6 · Crecimiento</span>
-    <span class="ws-level">N7 · Radar de fugas ✦</span>
-  </div>
   <button class="ws-btn" onclick="enterDashboard()">Explorar mi diagnóstico →</button>
-  <div class="ws-footer">Dashboard generado por Ordy · ordy.cr</div>
-</div>
-<div class="ws" id="ws">
-  <div class="ws-ordy"><img src="ordy.png" alt="Ordy"/></div>
-  <div class="ws-brand">Ordy · Orden y plan ✓</div>
-  <h1 class="ws-title">Bienvenida al<br><span>océano de tu negocio</span></h1>
-  <div class="ws-divider"></div>
-  <p class="ws-sub">Ordy convierte la información de tu negocio en una <strong>ruta clara de niveles, tareas y decisiones</strong>. Cada nivel tiene su guía. Avanzás a tu ritmo.</p>
-  <div class="ws-levels">
-    <button class="ws-lvl" onclick="wsGo('overview')">
-      <div class="ws-lvl-av"><img src="navi.png" alt="Navi"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Vista General</div><div class="ws-lvl-sub">Panorama del negocio</div></div>
-      <span class="ws-lvl-num done">→</span>
-    </button>
-    <button class="ws-lvl" onclick="wsGo('n1')">
-      <div class="ws-lvl-av"><img src="lumi.png" alt="Lumi"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Nivel 1 · Entendé tu negocio</div><div class="ws-lvl-sub">Con Lumi</div></div>
-      <span class="ws-lvl-num done">✓</span>
-    </button>
-    <button class="ws-lvl" onclick="wsGo('n2')">
-      <div class="ws-lvl-av"><img src="carey.png" alt="Carey"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Nivel 2 · Orden operativo</div><div class="ws-lvl-sub">Con Carey</div></div>
-      <span class="ws-lvl-num done">✓</span>
-    </button>
-    <button class="ws-lvl" onclick="wsGo('n3')">
-      <div class="ws-lvl-av"><img src="regi.png" alt="Regi"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Nivel 3 · Plata sin autoengaño</div><div class="ws-lvl-sub">Con Regi</div></div>
-      <span class="ws-lvl-num done">✓</span>
-    </button>
-    <button class="ws-lvl" onclick="wsGo('n4')">
-      <div class="ws-lvl-av"><img src="marty.png" alt="Marty"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Nivel 4 · Formalización</div><div class="ws-lvl-sub">Con Marty</div></div>
-      <span class="ws-lvl-num done">✓</span>
-    </button>
-    <button class="ws-lvl" onclick="wsGo('n5')">
-      <div class="ws-lvl-av"><img src="cabu.png" alt="Cabu"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Nivel 5 · Clientes y políticas</div><div class="ws-lvl-sub">Con Cabu</div></div>
-      <span class="ws-lvl-num done">✓</span>
-    </button>
-    <button class="ws-lvl" onclick="wsGo('n6')">
-      <div class="ws-lvl-av"><img src="pepe.png" alt="Pepe"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Nivel 6 · Crecimiento</div><div class="ws-lvl-sub">Con Pepe</div></div>
-      <span class="ws-lvl-num done">✓</span>
-    </button>
-    <button class="ws-lvl" onclick="wsGo('n7')" style="border-color:rgba(249,70,70,0.3);background:rgba(249,70,70,0.1);">
-      <div class="ws-lvl-av"><img src="glau.png" alt="Glau"/></div>
-      <div class="ws-lvl-info"><div class="ws-lvl-name">Nivel 7 · Radar de fugas</div><div class="ws-lvl-sub">Con Glau · Exclusivo Pro</div></div>
-      <span class="ws-lvl-num pro">PRO</span>
-    </button>
   </div>
-  <button class="ws-enter" onclick="wsGo('overview')">Explorar mi diagnóstico →</button>
-  <div class="ws-note">Dashboard generado por Ordy</div>
-</div>
 <div class="logo-bar">
   <img src="logo.png" alt="Ordy · orden y plan"/>
 </div>
+<div id="ow">
+  <div class="av"><img src="ordy.png" alt="Ordy"/></div>
+  <div class="brand">Ordy · Orden y plan ✓</div>
+  <h1>Bienvenida al<br><em>océano de tu negocio</em></h1>
+  <div class="line"></div>
+  <p class="desc">Ordy convierte la información de tu negocio en una <b>ruta clara de niveles, tareas y decisiones</b>. Cada nivel tiene su guía.</p>
+  <div class="lvls">
+    <button class="lv" onclick="owGo('overview')"><div class="lv-av"><img src="navi.png"/></div><div class="lv-tx"><span class="lv-nm">Vista General</span><span class="lv-sb">Panorama del negocio</span></div><span class="lv-bg ok">→</span></button>
+    <button class="lv" onclick="owGo('n1')"><div class="lv-av"><img src="lumi.png"/></div><div class="lv-tx"><span class="lv-nm">N1 · Entendé tu negocio</span><span class="lv-sb">Con Lumi</span></div><span class="lv-bg ok">✓</span></button>
+    <button class="lv" onclick="owGo('n2')"><div class="lv-av"><img src="carey.png"/></div><div class="lv-tx"><span class="lv-nm">N2 · Orden operativo</span><span class="lv-sb">Con Carey</span></div><span class="lv-bg ok">✓</span></button>
+    <button class="lv" onclick="owGo('n3')"><div class="lv-av"><img src="regi.png"/></div><div class="lv-tx"><span class="lv-nm">N3 · Plata sin autoengaño</span><span class="lv-sb">Con Regi</span></div><span class="lv-bg ok">✓</span></button>
+    <button class="lv" onclick="owGo('n4')"><div class="lv-av"><img src="marty.png"/></div><div class="lv-tx"><span class="lv-nm">N4 · Formalización</span><span class="lv-sb">Con Marty</span></div><span class="lv-bg ok">✓</span></button>
+    <button class="lv" onclick="owGo('n5')"><div class="lv-av"><img src="cabu.png"/></div><div class="lv-tx"><span class="lv-nm">N5 · Clientes y políticas</span><span class="lv-sb">Con Cabu</span></div><span class="lv-bg ok">✓</span></button>
+    <button class="lv" onclick="owGo('n6')"><div class="lv-av"><img src="pepe.png"/></div><div class="lv-tx"><span class="lv-nm">N6 · Crecimiento</span><span class="lv-sb">Con Pepe</span></div><span class="lv-bg ok">✓</span></button>
+    <button class="lv" onclick="owGo('n7')" style="border:1px solid rgba(249,70,70,0.3);background:rgba(249,70,70,0.08);"><div class="lv-av"><img src="glau.png"/></div><div class="lv-tx"><span class="lv-nm">N7 · Radar de fugas</span><span class="lv-sb">Con Glau · Pro</span></div><span class="lv-bg pr">PRO</span></button>
+  </div>
+  <button class="go" onclick="owGo('overview')">Explorar mi diagnóstico →</button>
+  <div class="ft">Dashboard generado por Ordy</div>
+</div>
 <aside class="sb">
-  <div class="sb-logo" onclick="document.getElementById('ws').classList.remove('hidden');document.getElementById('ws').style.display='flex';" style="cursor:pointer;" title="Inicio Ordy">
+  <div class="sb-logo" onclick="document.getElementById('ow').classList.remove('hide');" style="cursor:pointer;">
     <div class="sb-logo-av"><img src="ordy.png" alt="ordy" style="width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.25));"/></div>
     <div class="sb-logo-text"><span>ordy</span><small>orden y plan ✓</small></div>
   </div>
@@ -1575,18 +1537,9 @@ Para servicios fuera de GAM, se cotiza el traslado adicional según ubicación, 
 
 <script>
 
-
-
-function wsGo(panel) {
-  var ws = document.getElementById('ws');
-  ws.classList.add('hidden');
-  setTimeout(function(){
-    ws.style.display = 'none';
-    // Buscar el botón correcto y activarlo
-    var btns = document.querySelectorAll('.ni');
-    btns.forEach(function(b){ b.classList.remove('on'); });
-    show(panel, null);
-  }, 400);
+function owGo(panel) {
+  document.getElementById('ow').classList.add('hide');
+  show(panel, null);
 }
 
 function show(id, btn) {

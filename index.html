@@ -249,10 +249,72 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
   .g2 { grid-template-columns:1fr !important; }
   .dist-label { min-width:unset; font-size:12px; }
 }
+
+/* WELCOME SCREEN */
+.welcome-screen{
+  position:fixed;inset:0;z-index:999;
+  background:var(--p);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 28px;
+  text-align:center;
+  transition:opacity 0.5s ease, transform 0.5s ease;
+}
+.welcome-screen.hidden{
+  opacity:0;pointer-events:none;transform:scale(0.97);
+}
+.ws-logo{
+  width:120px;height:120px;border-radius:24px;
+  overflow:hidden;margin-bottom:24px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+  cursor:pointer;
+}
+.ws-logo img{width:100%;height:100%;object-fit:cover;}
+.ws-brand{font-size:13px;font-weight:800;color:var(--pl);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.ws-title{font-size:32px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:16px;}
+.ws-title span{color:var(--cream);}
+.ws-divider{width:48px;height:3px;background:rgba(255,255,255,0.25);border-radius:2px;margin:0 auto 20px;}
+.ws-desc{font-size:15px;color:rgba(255,255,255,0.72);line-height:1.7;max-width:340px;margin:0 auto 36px;}
+.ws-desc strong{color:#fff;}
+.ws-levels{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:36px;max-width:340px;}
+.ws-level{background:rgba(255,255,255,0.12);color:#fff;font-size:12px;font-weight:700;
+  padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);}
+.ws-btn{
+  background:#fff;color:var(--p);
+  border:none;border-radius:50px;
+  padding:16px 40px;font-size:16px;font-weight:900;
+  cursor:pointer;font-family:'Nunito',sans-serif;
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.ws-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2);}
+.ws-footer{margin-top:28px;font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px;}
 </style>
 </head>
 <body>
 
+<div class="welcome-screen" id="welcome-screen">
+  <div class="ws-logo" onclick="enterDashboard()">
+    <img src="ordy.png" alt="Ordy"/>
+  </div>
+  <div class="ws-brand">Ordy · Orden y plan ✓</div>
+  <h1 class="ws-title">Bienvenida al<br><span>océano de tu negocio</span></h1>
+  <div class="ws-divider"></div>
+  <p class="ws-desc">
+    Ordy es un <strong>sistema de orden para negocios</strong>. Convierte la información de tu empresa en una ruta clara de niveles, tareas, alertas y decisiones.<br><br>
+    Cada nivel tiene su guía. Avanzás a tu ritmo.
+  </p>
+  <div class="ws-levels">
+    <span class="ws-level">N1 · Entendé tu negocio</span>
+    <span class="ws-level">N2 · Orden operativo</span>
+    <span class="ws-level">N3 · Plata sin autoengaño</span>
+    <span class="ws-level">N4 · Formalización</span>
+    <span class="ws-level">N5 · Clientes y políticas</span>
+    <span class="ws-level">N6 · Crecimiento</span>
+    <span class="ws-level">N7 · Radar de fugas ✦</span>
+  </div>
+  <button class="ws-btn" onclick="enterDashboard()">Explorar mi diagnóstico →</button>
+  <div class="ws-footer">Dashboard generado por Ordy · ordy.cr</div>
+</div>
 <div class="logo-bar">
   <img src="logo.png" alt="Ordy · orden y plan"/>
 </div>
@@ -1449,6 +1511,13 @@ Para servicios fuera de GAM, se cotiza el traslado adicional según ubicación, 
 </main>
 
 <script>
+
+function enterDashboard() {
+  var ws = document.getElementById('welcome-screen');
+  ws.classList.add('hidden');
+  setTimeout(function(){ ws.style.display='none'; }, 500);
+}
+
 function show(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));

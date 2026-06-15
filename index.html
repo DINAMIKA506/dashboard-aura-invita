@@ -50,7 +50,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
 .pill.green{background:var(--gp);color:var(--g);}
 .pill.purple{background:var(--pp);color:var(--p);}
 .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--g);}
-.content{padding:24px 28px;flex:1;}
+.content{padding:24px 28px 0;flex:1;}
 .panel{display:none;}.panel.on{display:block;}
 .mascot-hero{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:24px;margin-bottom:20px;}
 .mh-mascot{width:140px;min-width:140px;display:flex;align-items:center;justify-content:center;}
@@ -209,6 +209,19 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
 @media(max-width:860px){
   .sb{top:52px;}
   .main{padding-top:52px;}
+}
+
+/* N3 TABLAS RESPONSIVE */
+@media(max-width:700px){
+  table{font-size:10px;}
+  table th, table td{padding:5px 6px !important;}
+  .g2 .card, .g2{grid-template-columns:1fr !important;}
+  .dist-label{min-width:120px !important;font-size:11px;}
+  .dist-row{flex-wrap:wrap;gap:4px;}
+}
+@media(max-width:480px){
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;}
+  table thead, table tbody, table tr{display:table;width:100%;table-layout:fixed;}
 }
 </style>
 </head>
@@ -1395,12 +1408,12 @@ Para servicios fuera de GAM, se cotiza el traslado adicional según ubicación, 
         <div class="lock-icon">🌊</div>
         <div class="lock-title">Este nivel se desbloquea con la comunidad</div>
         <div class="lock-text">El Nivel 8 es el espacio donde los negocios que ya ordenaron su base se juntan para aprender, compartir y votar por las próximas herramientas de Ordy.<br><br>Ingresá a nuestro grupo de networking en WhatsApp y ayudanos a entender qué otras herramientas podríamos integrar.</div>
-        <button class="lock-btn" onclick="window.open('https://wa.me/50600000000?text=Quiero+unirme+a+la+comunidad+Ordy','_blank')">Unirme al grupo de WhatsApp →</button>
+        <button class="lock-btn" onclick="window.open('https://chat.whatsapp.com/FiiqKunmfSDJeRsq2TFU5y?s=cl&p=i&ilr=2&amv=0">Unirme al grupo de WhatsApp →</button>
       </div>
     </div>
 
     <!-- PLAN 30 -->
-  <div class="footer">
+  <div class="footer" style="margin-top:0;">
     <div class="footer-logo">
       <div class="footer-logo-av"><img src="ordy.png" alt="ordy" style="width:30px;height:30px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.25));"/></div>
       <div><strong>ordy</strong><span>Un sistema de orden para tu negocio</span></div>

@@ -211,17 +211,43 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
   .main{padding-top:52px;}
 }
 
-/* N3 TABLAS RESPONSIVE */
-@media(max-width:700px){
-  table{font-size:10px;}
-  table th, table td{padding:5px 6px !important;}
-  .g2 .card, .g2{grid-template-columns:1fr !important;}
-  .dist-label{min-width:120px !important;font-size:11px;}
-  .dist-row{flex-wrap:wrap;gap:4px;}
-}
-@media(max-width:480px){
-  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;}
-  table thead, table tbody, table tr{display:table;width:100%;table-layout:fixed;}
+/* N3 TABLAS → TARJETAS EN MÓVIL */
+@media(max-width:640px){
+  /* Ocultar encabezado de tabla */
+  table thead { display:none; }
+  /* Cada fila se convierte en tarjeta */
+  table tbody tr {
+    display:block;
+    background:var(--bg);
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:10px;
+    border:1px solid var(--border);
+  }
+  /* Cada celda muestra su etiqueta y valor */
+  table tbody td {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:5px 0 !important;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+  }
+  table tbody td:last-child { border-bottom:none; }
+  /* Etiqueta generada con data-label */
+  table tbody td::before {
+    content: attr(data-label);
+    font-weight:800;
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    flex-shrink:0;
+    margin-right:8px;
+  }
+  /* Ajustes generales en móvil */
+  .g2 { grid-template-columns:1fr !important; }
+  .dist-label { min-width:unset; font-size:12px; }
 }
 </style>
 </head>
@@ -556,10 +582,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
               <th style="padding:8px 10px;text-align:right;font-weight:800;color:var(--muted);">10% Ah.</th>
             </tr></thead>
             <tbody>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;font-weight:700;">Primer Instante</td><td style="padding:8px 10px;text-align:right;">₡236.000</td><td style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡211.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡105.500</td><td style="padding:8px 10px;text-align:right;">₡42.200</td><td style="padding:8px 10px;text-align:right;">₡42.200</td><td style="padding:8px 10px;text-align:right;">₡21.100</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;font-weight:700;">A tu Ritmo</td><td style="padding:8px 10px;text-align:right;">₡312.000</td><td style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡287.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡143.500</td><td style="padding:8px 10px;text-align:right;">₡57.400</td><td style="padding:8px 10px;text-align:right;">₡57.400</td><td style="padding:8px 10px;text-align:right;">₡28.700</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;font-weight:700;">Momento a Momento</td><td style="padding:8px 10px;text-align:right;">₡392.000</td><td style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡367.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡183.500</td><td style="padding:8px 10px;text-align:right;">₡73.400</td><td style="padding:8px 10px;text-align:right;">₡73.400</td><td style="padding:8px 10px;text-align:right;">₡36.700</td></tr>
-              <tr><td style="padding:8px 10px;font-weight:700;">Sesión fotográfica</td><td style="padding:8px 10px;text-align:right;">₡82.000</td><td style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡57.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡28.500</td><td style="padding:8px 10px;text-align:right;">₡11.400</td><td style="padding:8px 10px;text-align:right;">₡11.400</td><td style="padding:8px 10px;text-align:right;">₡5.700</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;font-weight:700;">Primer Instante</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡236.000</td><td data-label="Costo dir." style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡211.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡105.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡42.200</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡42.200</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡21.100</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;font-weight:700;">A tu Ritmo</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡312.000</td><td data-label="Costo dir." style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡287.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡143.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡57.400</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡57.400</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡28.700</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;font-weight:700;">Momento a Momento</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡392.000</td><td data-label="Costo dir." style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡367.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡183.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡73.400</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡73.400</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡36.700</td></tr>
+              <tr><td data-label="Servicio" style="padding:8px 10px;font-weight:700;">Sesión fotográfica</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡82.000</td><td data-label="Costo dir." style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡57.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡28.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡11.400</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡11.400</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡5.700</td></tr>
             </tbody>
           </table>
         </div>
@@ -581,9 +607,9 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
               <th style="padding:8px 10px;text-align:right;font-weight:800;color:var(--muted);">10% Ah.</th>
             </tr></thead>
             <tbody>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;font-weight:700;">Esencial</td><td style="padding:8px 10px;text-align:right;">₡95.000</td><td style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡70.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡35.000</td><td style="padding:8px 10px;text-align:right;">₡14.000</td><td style="padding:8px 10px;text-align:right;">₡14.000</td><td style="padding:8px 10px;text-align:right;">₡7.000</td></tr>
-              <tr style="border-bottom:1px solid var(--border);background:rgba(26,158,110,0.04);"><td style="padding:8px 10px;font-weight:800;color:var(--g);">Airbnb Plus ⭐</td><td style="padding:8px 10px;text-align:right;">₡190.000</td><td style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡165.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡82.500</td><td style="padding:8px 10px;text-align:right;">₡33.000</td><td style="padding:8px 10px;text-align:right;">₡33.000</td><td style="padding:8px 10px;text-align:right;">₡16.500</td></tr>
-              <tr><td style="padding:8px 10px;font-weight:700;">Premium Experience</td><td style="padding:8px 10px;text-align:right;">₡250.000</td><td style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡225.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡112.500</td><td style="padding:8px 10px;text-align:right;">₡45.000</td><td style="padding:8px 10px;text-align:right;">₡45.000</td><td style="padding:8px 10px;text-align:right;">₡22.500</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;font-weight:700;">Esencial</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡95.000</td><td data-label="Costo dir." style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡70.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡35.000</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡14.000</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡14.000</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡7.000</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:rgba(26,158,110,0.04);"><td data-label="Servicio" style="padding:8px 10px;font-weight:800;color:var(--g);">Airbnb Plus ⭐</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡190.000</td><td data-label="Costo dir." style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡165.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡82.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡33.000</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡33.000</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡16.500</td></tr>
+              <tr><td data-label="Servicio" style="padding:8px 10px;font-weight:700;">Premium Experience</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡250.000</td><td data-label="Costo dir." style="padding:8px 10px;text-align:right;color:var(--r);">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡225.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡112.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡45.000</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡45.000</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡22.500</td></tr>
             </tbody>
           </table>
         </div>
@@ -604,9 +630,9 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
               <th style="padding:8px 10px;text-align:right;font-weight:800;color:var(--muted);">10% Ah.</th>
             </tr></thead>
             <tbody>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;font-weight:700;">Invitación digital</td><td style="padding:8px 10px;text-align:right;">₡15.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡15.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡7.500</td><td style="padding:8px 10px;text-align:right;">₡3.000</td><td style="padding:8px 10px;text-align:right;">₡3.000</td><td style="padding:8px 10px;text-align:right;">₡1.500</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;font-weight:700;">Invitación en video</td><td style="padding:8px 10px;text-align:right;">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡25.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡12.500</td><td style="padding:8px 10px;text-align:right;">₡5.000</td><td style="padding:8px 10px;text-align:right;">₡5.000</td><td style="padding:8px 10px;text-align:right;">₡2.500</td></tr>
-              <tr><td style="padding:8px 10px;font-weight:700;">Plantilla genérica</td><td style="padding:8px 10px;text-align:right;">₡5.000</td><td style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡5.000</td><td style="padding:8px 10px;text-align:right;color:var(--p);">₡2.500</td><td style="padding:8px 10px;text-align:right;">₡1.000</td><td style="padding:8px 10px;text-align:right;">₡1.000</td><td style="padding:8px 10px;text-align:right;">₡500</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Producto" style="padding:8px 10px;font-weight:700;">Invitación digital</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡15.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡15.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡7.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡3.000</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡3.000</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡1.500</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Producto" style="padding:8px 10px;font-weight:700;">Invitación en video</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡25.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡25.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡12.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡5.000</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡5.000</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡2.500</td></tr>
+              <tr><td data-label="Producto" style="padding:8px 10px;font-weight:700;">Plantilla genérica</td><td data-label="Precio" style="padding:8px 10px;text-align:right;">₡5.000</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;color:var(--g);font-weight:800;">₡5.000</td><td data-label="50% Majo" style="padding:8px 10px;text-align:right;color:var(--p);">₡2.500</td><td data-label="20% Op." style="padding:8px 10px;text-align:right;">₡1.000</td><td data-label="20% Inv." style="padding:8px 10px;text-align:right;">₡1.000</td><td data-label="10% Ah." style="padding:8px 10px;text-align:right;">₡500</td></tr>
             </tbody>
           </table>
         </div>
@@ -622,16 +648,16 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
               <th style="padding:8px 10px;text-align:right;font-weight:800;color:var(--p);">¿Cuántas ventas cubren el piso?</th>
             </tr></thead>
             <tbody>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">Sesión fotográfica</td><td style="padding:8px 10px;text-align:right;">₡57.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">3 sesiones</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">Esencial</td><td style="padding:8px 10px;text-align:right;">₡70.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--a);">2 paquetes</td></tr>
-              <tr style="border-bottom:1px solid var(--border);background:rgba(26,158,110,0.04);"><td style="padding:8px 10px;font-weight:800;color:var(--g);">Airbnb Plus ⭐</td><td style="padding:8px 10px;text-align:right;">₡165.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 paquete</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">Premium Experience</td><td style="padding:8px 10px;text-align:right;">₡225.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 paquete</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">Primer Instante</td><td style="padding:8px 10px;text-align:right;">₡211.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 evento</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">A tu Ritmo</td><td style="padding:8px 10px;text-align:right;">₡287.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 evento</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">Momento a Momento</td><td style="padding:8px 10px;text-align:right;">₡367.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 evento</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">Invitación digital</td><td style="padding:8px 10px;text-align:right;">₡15.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">9 invitaciones</td></tr>
-              <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 10px;">Invitación en video</td><td style="padding:8px 10px;text-align:right;">₡25.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">5 invitaciones</td></tr>
-              <tr><td style="padding:8px 10px;">Plantilla genérica</td><td style="padding:8px 10px;text-align:right;">₡5.000</td><td style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">25 plantillas</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">Sesión fotográfica</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡57.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">3 sesiones</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">Esencial</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡70.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--a);">2 paquetes</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:rgba(26,158,110,0.04);"><td data-label="Servicio" style="padding:8px 10px;font-weight:800;color:var(--g);">Airbnb Plus ⭐</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡165.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 paquete</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">Premium Experience</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡225.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 paquete</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">Primer Instante</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡211.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 evento</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">A tu Ritmo</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡287.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 evento</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">Momento a Momento</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡367.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--g);">1 evento</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">Invitación digital</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡15.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">9 invitaciones</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td data-label="Servicio" style="padding:8px 10px;">Invitación en video</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡25.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">5 invitaciones</td></tr>
+              <tr><td data-label="Servicio" style="padding:8px 10px;">Plantilla genérica</td><td data-label="Disponible" style="padding:8px 10px;text-align:right;">₡5.000</td><td data-label="¿Cuántas ventas?" style="padding:8px 10px;text-align:right;font-weight:800;color:var(--r);">25 plantillas</td></tr>
             </tbody>
           </table>
         </div>
